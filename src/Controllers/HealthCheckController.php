@@ -25,7 +25,7 @@ class HealthCheckController extends Controller
      */
     public function simple()
     {
-        return response()->json($this->componentCheck->getSimpleResponse(), 200, [], JSON_PRETTY_PRINT);
+        return response($this->componentCheck->getSimpleResponse(), 200, []);
     }
 
     /**
@@ -37,6 +37,6 @@ class HealthCheckController extends Controller
             return null;
         }
 
-        return response()->json($this->componentCheck->getExtendetResponse(), 200, [], JSON_PRETTY_PRINT);
+        return response($this->componentCheck->getExtendetResponse(), 200, []);
     }
 }
