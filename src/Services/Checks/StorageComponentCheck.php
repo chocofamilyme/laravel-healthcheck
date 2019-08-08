@@ -21,17 +21,7 @@ class StorageComponentCheck implements ComponentCheckInterface
             throw new RuntimeException("Failed to write to $file");
         $this->delete($file);
 
-        $file = storage_path('app/public/healthcheck.txt');
-        if($this->write($file, 'some data') === false)
-            throw new RuntimeException("Failed to write to $file");
-        $this->delete($file);
-
         $file = storage_path('logs/healthcheck.txt');
-        if($this->write($file, 'some data') === false)
-            throw new RuntimeException("Failed to write to $file");
-        $this->delete($file);
-
-        $file = storage_path('framework/cache/healthcheck.txt');
         if($this->write($file, 'some data') === false)
             throw new RuntimeException("Failed to write to $file");
         $this->delete($file);
