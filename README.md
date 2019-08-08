@@ -4,7 +4,7 @@ For example you want to check "Database Connection" of your microservice.
 
 # Installation
 ```bash
-composer require chocofamilyme/laravel-healthcheck
+composer require chocofamilyme/laravel-healthcheck ^0.0
 ```
 
 # Publishing the configuration (optional)
