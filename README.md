@@ -57,3 +57,32 @@ return [
     ]
 ]
 ```
+
+# Responses
+There is a configuration param which describes which response class to use to output the response. For example
+- /health - Chocofamilyme\LaravelHealthCheck\Responses\DefaultResponse::class
+output would look like this
+```json
+{
+  "DB": "OK",
+  "CACHE": "OK",
+  "SESSIONS": "CRITICAL"
+}
+```
+
+- /health - Chocofamilyme\LaravelHealthCheck\Responses\ChocolifemeResponse::class
+output would look like this
+```json
+{
+    "error_code": 0,
+    "status": "success",
+    "message": "Everything is fine",
+    "data": {
+        "DB": "OK",
+        "CACHE": "OK",
+        "SESSIONS": "OK"
+    }
+}
+```
+
+Feel free to add your responses, if you want for example to output it in a view instead json.

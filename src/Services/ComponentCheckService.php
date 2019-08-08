@@ -25,46 +25,15 @@ class ComponentCheckService
     /**
      * @return array
      */
-    public function getSimpleResponse()
+    public function getResponse()
     {
         $checkResponses = [];
         foreach($this->checks as $checkTitle => $check)
         {
-            $checkResponses[$checkTitle] = $this->getSimpleStatus((new $check));
-        }
-        return $checkResponses;
-    }
-
-    /**
-     * @param ComponentCheckInterface $check
-     * @return string
-     */
-    private function getSimpleStatus(ComponentCheckInterface $check)
-    {
-        try
-        {
-            $check->check();
-            return self::OK;
-        }
-        catch(\Exception $exception)
-        {
-            return self::CRITICAL;
-        }
-    }
-
-    /**
-     * @return array
-     */
-    public function getExtendetResponse()
-    {
-        $checkResponses = [];
-        foreach($this->checks as $checkTitle => $check)
-        {
-            $response = $this->getExtendetStatus((new $check));
+            $response = $this->getStatus((new $check));
             $checkResponses[$checkTitle] = [
-                'STATUS' => $response['status'],
-                'STATUS_BOOL' => $response['status_bool'],
-                'MESSAGE' => $response['message'],
+                'status' => $response['status'],
+                'message' => $response['message'],
             ];
         }
         return $checkResponses;
@@ -74,22 +43,20 @@ class ComponentCheckService
      * @param ComponentCheckInterface $check
      * @return array
      */
-    private function getExtendetStatus(ComponentCheckInterface $check)
+    private function getStatus(ComponentCheckInterface $check)
     {
         try
         {
             $check->check();
             return [
-                'status' => self::OK,
-                'status_bool' => true,
+                'status' => true,
                 'message' => null
             ];
         }
         catch(\Exception $exception)
         {
             return [
-                'status' => self::CRITICAL,
-                'status_bool' => false,
+                'status' => false,
                 'message' => $exception->getMessage(),
             ];
         }

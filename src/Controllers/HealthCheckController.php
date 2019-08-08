@@ -25,7 +25,9 @@ class HealthCheckController extends Controller
      */
     public function simple()
     {
-        return response($this->componentCheck->getSimpleResponse(), 200, []);
+        $checks = $this->componentCheck->getResponse();
+        $responseClass = config('healthcheck.response');
+        return (new $responseClass)->simpleResponse($checks);
     }
 
     /**
@@ -37,6 +39,8 @@ class HealthCheckController extends Controller
             return null;
         }
 
-        return response($this->componentCheck->getExtendetResponse(), 200, []);
+        $checks = $this->componentCheck->getResponse();
+        $responseClass = config('healthcheck.response');
+        return (new $responseClass)->extendetResponse($checks);
     }
 }
