@@ -16,6 +16,7 @@ php artisan vendor:publish --provider="Chocofamilyme\LaravelHealthCheck\Provider
 - Database connection check
 - Cache write&read check
 - Sessions write&read check
+- Storage check
 
 # Routes
 - /health
@@ -23,7 +24,8 @@ php artisan vendor:publish --provider="Chocofamilyme\LaravelHealthCheck\Provider
 {
   "DB": "OK",
   "CACHE": "OK",
-  "SESSIONS": "CRITICAL"
+  "SESSIONS": "CRITICAL",
+  "STORAGE": "OK"
 }
 ```
 - /health/extendet
@@ -43,6 +45,11 @@ php artisan vendor:publish --provider="Chocofamilyme\LaravelHealthCheck\Provider
     "STATUS": "CRITICAL",
     "STATUS_BOOL": false,
     "MESSAGE": "Connection to tarantool.example.com failed"
+  },
+  "STORAGE": {
+    "STATUS": "OK",
+    "STATUS_BOOL": true,
+    "MESSAGE": null
   }
 }
 ```
@@ -66,7 +73,8 @@ output would look like this
 {
   "DB": "OK",
   "CACHE": "OK",
-  "SESSIONS": "CRITICAL"
+  "SESSIONS": "CRITICAL",
+  "STORAGE": "OK"
 }
 ```
 
@@ -80,7 +88,8 @@ output would look like this
     "data": {
         "DB": "OK",
         "CACHE": "OK",
-        "SESSIONS": "OK"
+        "SESSIONS": "CRITICAL",
+        "STORAGE": "OK"
     }
 }
 ```
