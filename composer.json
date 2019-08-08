@@ -1,0 +1,35 @@
+{
+    "name": "chocofamilyme/laravel-healthcheck",
+    "description": "Serves functionality of healthchecks of your application",
+    "keywords": [
+        "laravel",
+        "status",
+        "healthcheck"
+    ],
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "IT Chocolife.me",
+            "homepage": "https://chocolife.me"
+        }
+    ],
+    "require": {
+        "php": ">= 7.0.0",
+        "laravel/framework": "^5.7|^5.8|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chocofamilyme\\LaravelHealthCheck\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chocofamilyme\\LaravelHealthCheck\\Providers\\HealthCheckServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
