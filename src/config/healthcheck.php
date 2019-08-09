@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'response' => Chocofamilyme\LaravelHealthCheck\Responses\ChocolifemeResponse::class,
+    'response' => Chocofamilyme\LaravelHealthCheck\Responses\ChocofamilyResponse::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -67,6 +67,6 @@ return [
         'DB' => Chocofamilyme\LaravelHealthCheck\Services\Checks\DatabaseComponentCheck::class,
         'CACHE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\CacheComponentCheck::class,
         'SESSIONS' => Chocofamilyme\LaravelHealthCheck\Services\Checks\SessionsComponentCheck::class,
-        'STORAGE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\StorageComponentCheck::class,
+        //'STORAGE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\StorageComponentCheck::class,
     ]
 ];

@@ -78,7 +78,7 @@ output would look like this
 }
 ```
 
-- /health - Chocofamilyme\LaravelHealthCheck\Responses\ChocolifemeResponse::class
+- /health - Chocofamilyme\LaravelHealthCheck\Responses\ChocofamilyResponse::class
 output would look like this
 ```json
 {

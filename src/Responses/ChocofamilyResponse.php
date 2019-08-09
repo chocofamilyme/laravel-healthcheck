@@ -2,7 +2,7 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Responses;
 
-class ChocolifemeResponse implements ResponseInterface
+class ChocofamilyResponse implements ResponseInterface
 {
     const OK = 'OK';
     const CRITICAL = 'CRITICAL';
