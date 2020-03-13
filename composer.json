@@ -16,11 +16,11 @@
   ],
   "require": {
     "php": ">= 7.1.0",
-    "Illuminate/cache": "^6.0|^7.0",
-    "Illuminate/support": "^6.0|^7.0",
+    "illuminate/cache": "^6.0|^7.0",
+    "illuminate/support": "^6.0|^7.0",
     "Illuminate/database": "^6.0|^7.0",
-    "Illuminate/session": "^6.0|^7.0",
-    "Illuminate/http": "^6.0|^7.0"
+    "illuminate/session": "^6.0|^7.0",
+    "illuminate/http": "^6.0|^7.0"
   },
   "autoload": {
     "psr-4": {
