@@ -2,7 +2,7 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Chocofamilyme\LaravelHealthCheck\Services\ComponentCheckService;
 
 class HealthCheckController extends Controller
