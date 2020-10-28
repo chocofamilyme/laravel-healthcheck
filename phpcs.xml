@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <description>The coding standard for PHP_CodeSniffer itself.</description>
+    <arg name="colors"/>
+    <arg name="extensions" value="php" />
+    <arg name="error-severity" value="1" />
+    <arg name="warning-severity" value="6"/>
+
+    <rule ref="PSR12">
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Files.LineEndings">
+        <severity>0</severity>
+    </rule>
+    <rule ref="Generic.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array" value="eval=>NULL,dd=>NULL,die=>NULL,var_dump=>NULL,sizeof=>count,delete=>unset,print=>echo,create_function=>NULL"/>
+        </properties>
+    </rule>
+
+    <file>./src</file>
+
+    <exclude-pattern>vendor</exclude-pattern>
+</ruleset>

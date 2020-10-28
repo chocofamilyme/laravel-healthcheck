@@ -2,28 +2,29 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Responses;
 
+use Illuminate\Http\Response;
+
 class DefaultResponse implements ResponseInterface
 {
-    const OK = 'OK';
-    const CRITICAL = 'CRITICAL';
+    private const OK       = 'OK';
+    private const CRITICAL = 'CRITICAL';
 
     /**
      * Return data in a simple way
      *
+     * @psalm-suppress UndefinedFunction
+     *
      * @param array $checks
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     *
+     * @return Response
      */
-    public function simpleResponse(array $checks)
+    public function simpleResponse(array $checks): Response
     {
         $responseArray = [];
-        foreach($checks as $checkTitle => $check)
-        {
-            if($check['status'])
-            {
+        foreach ($checks as $checkTitle => $check) {
+            if ($check['status']) {
                 $responseArray[$checkTitle] = self::OK;
-            }
-            else
-            {
+            } else {
                 $responseArray[$checkTitle] = self::CRITICAL;
             }
         }
@@ -34,28 +35,27 @@ class DefaultResponse implements ResponseInterface
     /**
      * Return data in extendet way
      *
+     * @psalm-suppress UndefinedFunction
+     *
      * @param $checks
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     *
+     * @return Response
      */
-    public function extendetResponse(array $checks)
+    public function extendetResponse(array $checks): Response
     {
         $responseArray = [];
-        foreach($checks as $checkTitle => $check)
-        {
-            if($check['status'])
-            {
+        foreach ($checks as $checkTitle => $check) {
+            if ($check['status']) {
                 $responseArray[$checkTitle] = [
-                    'STATUS' => self::OK,
+                    'STATUS'      => self::OK,
                     'STATUS_BOOL' => true,
-                    'MESSAGE' => $check['message']
+                    'MESSAGE'     => $check['message'],
                 ];
-            }
-            else
-            {
+            } else {
                 $responseArray[$checkTitle] = [
-                    'STATUS' => self::CRITICAL,
+                    'STATUS'      => self::CRITICAL,
                     'STATUS_BOOL' => false,
-                    'MESSAGE' => $check['message']
+                    'MESSAGE'     => $check['message'],
                 ];
             }
         }

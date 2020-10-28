@@ -3,12 +3,10 @@
 namespace Chocofamilyme\LaravelHealthCheck\Services;
 
 use Chocofamilyme\LaravelHealthCheck\Services\Checks\ComponentCheckInterface;
+use Illuminate\Contracts\Config\Repository;
 
 class ComponentCheckService
 {
-    const OK = 'OK';
-    const CRITICAL = 'CRITICAL';
-
     /**
      * @var array
      */
@@ -16,47 +14,50 @@ class ComponentCheckService
 
     /**
      * ComponentCheck constructor.
+     *
+     * @param Repository $config
      */
-    public function __construct()
+    public function __construct(Repository $config)
     {
-        $this->checks = config('healthcheck.componentChecks');
+        $this->checks = $config->get('healthcheck.componentChecks');
     }
 
     /**
      * @return array
      */
-    public function getResponse()
+    public function getResponse(): array
     {
         $checkResponses = [];
-        foreach($this->checks as $checkTitle => $check)
-        {
-            $response = $this->getStatus((new $check));
+        foreach ($this->checks as $checkTitle => $check) {
+            /** @var ComponentCheckInterface $component */
+            $component                   = new $check();
+            $response                    = $this->getStatus($component);
             $checkResponses[$checkTitle] = [
-                'status' => $response['status'],
+                'status'  => $response['status'],
                 'message' => $response['message'],
             ];
         }
+
         return $checkResponses;
     }
 
     /**
      * @param ComponentCheckInterface $check
+     *
      * @return array
      */
-    private function getStatus(ComponentCheckInterface $check)
+    private function getStatus(ComponentCheckInterface $check): array
     {
-        try
-        {
+        try {
             $check->check();
+
             return [
-                'status' => true,
-                'message' => null
+                'status'  => true,
+                'message' => null,
             ];
-        }
-        catch(\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return [
-                'status' => false,
+                'status'  => false,
                 'message' => $exception->getMessage(),
             ];
         }

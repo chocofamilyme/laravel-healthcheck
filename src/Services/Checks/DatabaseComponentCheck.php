@@ -8,6 +8,7 @@ class DatabaseComponentCheck implements ComponentCheckInterface
 {
     /**
      * Perform check
+     * @psalm-suppress UndefinedInterfaceMethod
      */
     public function check(): void
     {
