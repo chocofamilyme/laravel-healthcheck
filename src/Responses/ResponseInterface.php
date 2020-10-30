@@ -2,7 +2,7 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Responses;
 
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as Response;
 
 interface ResponseInterface
 {
@@ -18,5 +18,5 @@ interface ResponseInterface
      *
      * @return Response
      */
-    public function extendetResponse(array $checks): Response;
+    public function extendedResponse(array $checks): Response;
 }

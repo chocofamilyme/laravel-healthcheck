@@ -2,12 +2,14 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Responses;
 
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
-class DefaultResponse implements ResponseInterface
+class Response implements ResponseInterface
 {
-    private const OK       = 'OK';
-    private const CRITICAL = 'CRITICAL';
+    private const   OK                  = 'OK';
+    private const   CRITICAL            = 'CRITICAL';
+    protected const HTTP_STATUS_SUCCESS = 200;
+    protected const HTTP_STATUS_FAIL    = 503;
 
     /**
      * Return data in a simple way
@@ -16,20 +18,22 @@ class DefaultResponse implements ResponseInterface
      *
      * @param array $checks
      *
-     * @return Response
+     * @return SymfonyResponse
      */
-    public function simpleResponse(array $checks): Response
+    public function simpleResponse(array $checks): SymfonyResponse
     {
         $responseArray = [];
+        $code          = self::HTTP_STATUS_SUCCESS;
         foreach ($checks as $checkTitle => $check) {
             if ($check['status']) {
                 $responseArray[$checkTitle] = self::OK;
             } else {
+                $code                       = self::HTTP_STATUS_FAIL;
                 $responseArray[$checkTitle] = self::CRITICAL;
             }
         }
 
-        return response()->json($responseArray, 200, [], JSON_PRETTY_PRINT);
+        return response()->json($responseArray, $code, [], JSON_PRETTY_PRINT);
     }
 
     /**
@@ -39,11 +43,12 @@ class DefaultResponse implements ResponseInterface
      *
      * @param $checks
      *
-     * @return Response
+     * @return SymfonyResponse
      */
-    public function extendetResponse(array $checks): Response
+    public function extendedResponse(array $checks): SymfonyResponse
     {
         $responseArray = [];
+        $code          = self::HTTP_STATUS_SUCCESS;
         foreach ($checks as $checkTitle => $check) {
             if ($check['status']) {
                 $responseArray[$checkTitle] = [
@@ -52,6 +57,7 @@ class DefaultResponse implements ResponseInterface
                     'MESSAGE'     => $check['message'],
                 ];
             } else {
+                $code                       = self::HTTP_STATUS_FAIL;
                 $responseArray[$checkTitle] = [
                     'STATUS'      => self::CRITICAL,
                     'STATUS_BOOL' => false,
@@ -60,6 +66,6 @@ class DefaultResponse implements ResponseInterface
             }
         }
 
-        return response()->json($responseArray, 200, [], JSON_PRETTY_PRINT);
+        return response()->json($responseArray, $code, [], JSON_PRETTY_PRINT);
     }
 }
