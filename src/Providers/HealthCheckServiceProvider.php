@@ -22,20 +22,24 @@ class HealthCheckServiceProvider extends ServiceProvider
 
         // Merge our config with application config
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/healthcheck.php', 'healthcheck'
+            __DIR__ . '/../config/healthcheck.php',
+            'healthcheck'
         );
     }
 
     /**
      * Bootstrap services.
      *
+     * @psalm-suppress UndefinedFunction
      * @return void
      */
     public function boot()
     {
         // Config
-        $this->publishes([
-            __DIR__ . '/../config/healthcheck.php' => config_path('healthcheck.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__ . '/../config/healthcheck.php' => config_path('healthcheck.php'),
+            ]
+        );
     }
 }

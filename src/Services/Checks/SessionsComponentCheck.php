@@ -13,12 +13,11 @@ class SessionsComponentCheck implements ComponentCheckInterface
      */
     public function check(): void
     {
-        $key = Str::random();
+        $key   = Str::random();
         $value = Str::random();
         Session::put($key, $value);
 
-        if(Session::get($key) != $value)
-        {
+        if (Session::get($key) !== $value) {
             throw new RuntimeException('Sessions does not works as expected');
         }
     }

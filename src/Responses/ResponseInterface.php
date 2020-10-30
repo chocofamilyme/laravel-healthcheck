@@ -2,19 +2,21 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Responses;
 
-use \Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as Response;
 
 interface ResponseInterface
 {
     /**
      * @param array $checks
+     *
      * @return Response
      */
-    public function simpleResponse(array $checks);
+    public function simpleResponse(array $checks): Response;
 
     /**
      * @param array $checks
+     *
      * @return Response
      */
-    public function extendetResponse(array $checks);
+    public function extendedResponse(array $checks): Response;
 }

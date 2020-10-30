@@ -13,12 +13,11 @@ class CacheComponentCheck implements ComponentCheckInterface
      */
     public function check(): void
     {
-        $key = Str::random();
+        $key   = Str::random();
         $value = Str::random();
         Cache::put($key, $value, 3);
 
-        if(Cache::get($key) != $value)
-        {
+        if (Cache::get($key) !== $value) {
             throw new RuntimeException('Cache does not works as expected');
         }
     }

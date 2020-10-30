@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'response' => Chocofamilyme\LaravelHealthCheck\Responses\ChocofamilyResponse::class,
+    'response' => Chocofamilyme\LaravelHealthCheck\Responses\Response::class,
 
     /*
     |--------------------------------------------------------------------------
