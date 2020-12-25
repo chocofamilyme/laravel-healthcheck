@@ -12,6 +12,6 @@ Route::get(
 
 /** @psalm-suppress UndefinedFunction */
 Route::get(
-    config('healthcheck.routeextendet', '/health/extendet'),
-    'Chocofamilyme\LaravelHealthCheck\Controllers\HealthCheckController@extendet'
+    config('healthcheck.routeextended', '/health/extended'),
+    'Chocofamilyme\LaravelHealthCheck\Controllers\HealthCheckController@extended'
 );

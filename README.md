@@ -4,7 +4,7 @@ For example you want to check "Database Connection" of your microservice.
 
 # Installation
 ```bash
-composer require chocofamilyme/laravel-healthcheck ^0.0
+composer require chocofamilyme/laravel-healthcheck ^2.0
 ```
 
 # Publishing the configuration (optional)
@@ -28,7 +28,7 @@ php artisan vendor:publish --provider="Chocofamilyme\LaravelHealthCheck\Provider
   "STORAGE": "OK"
 }
 ```
-- /health/extendet
+- /health/extended
 ```json
 {
   "DB": {
@@ -67,7 +67,7 @@ return [
 
 # Responses
 There is a configuration param which describes which response class to use to output the response. For example
-- /health - Chocofamilyme\LaravelHealthCheck\Responses\DefaultResponse::class
+- /health - Chocofamilyme\LaravelHealthCheck\Responses\Response::class
 output would look like this
 ```json
 {
@@ -78,13 +78,10 @@ output would look like this
 }
 ```
 
-- /health - Chocofamilyme\LaravelHealthCheck\Responses\ChocofamilyResponse::class
+- /health - Chocofamilyme\LaravelHealthCheck\Responses\Response::class
 output would look like this
 ```json
 {
-    "error_code": 0,
-    "status": "success",
-    "message": "Everything is fine",
     "data": {
         "DB": "OK",
         "CACHE": "OK",
