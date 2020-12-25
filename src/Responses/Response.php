@@ -37,7 +37,7 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Return data in extendet way
+     * Return data in extended way
      *
      * @psalm-suppress UndefinedFunction
      *

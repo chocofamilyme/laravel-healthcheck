@@ -2,6 +2,7 @@
 
 namespace Chocofamilyme\LaravelHealthCheck\Providers;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 
 class HealthCheckServiceProvider extends ServiceProvider
@@ -10,7 +11,7 @@ class HealthCheckServiceProvider extends ServiceProvider
      * Register services.
      *
      * @return void
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     public function register()
     {
@@ -18,7 +19,7 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         // Controller
-        $this->app->make('Chocofamilyme\LaravelHealthCheck\Controllers\HealthCheckController');
+        $this->app->make(\Chocofamilyme\LaravelHealthCheck\Controllers\HealthCheckController::class);
 
         // Merge our config with application config
         $this->mergeConfigFrom(

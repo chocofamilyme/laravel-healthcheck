@@ -15,14 +15,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Route for the extendet response
+    | Route for the extended response
     |--------------------------------------------------------------------------
     |
-    | Specify route for the extendet response
+    | Specify route for the extended response
     |
     */
 
-    'routeextendet' => '/health/extendet',
+    'routeextended' => '/health/extended',
 
     /*
     |--------------------------------------------------------------------------
@@ -39,16 +39,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enable extendet health check endpoint
+    | Enable extended health check endpoint
     |--------------------------------------------------------------------------
     |
-    | Enable extendet endpoint for healthchecks with more information what
+    | Enable extended endpoint for healthchecks with more information what
     | went wrong, this is dangerous because in the exception messages may be
     | confidential information
     |
     */
 
-    'extendet' => false,
+    'extended' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -64,9 +64,9 @@ return [
     */
 
     'componentChecks' => [
-        'DB' => Chocofamilyme\LaravelHealthCheck\Services\Checks\DatabaseComponentCheck::class,
-        'CACHE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\CacheComponentCheck::class,
-        'SESSIONS' => Chocofamilyme\LaravelHealthCheck\Services\Checks\SessionsComponentCheck::class,
+        //'DB' => Chocofamilyme\LaravelHealthCheck\Services\Checks\DatabaseComponentCheck::class,
+        //'CACHE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\CacheComponentCheck::class,
+        //'SESSIONS' => Chocofamilyme\LaravelHealthCheck\Services\Checks\SessionsComponentCheck::class,
         //'STORAGE' => Chocofamilyme\LaravelHealthCheck\Services\Checks\StorageComponentCheck::class,
     ]
 ];

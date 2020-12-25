@@ -3,6 +3,7 @@
 namespace Chocofamilyme\LaravelHealthCheck\Controllers;
 
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Chocofamilyme\LaravelHealthCheck\Services\ComponentCheckService;
 
@@ -23,9 +24,9 @@ class HealthCheckController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function simple(): \Illuminate\Http\JsonResponse
+    public function simple(): JsonResponse
     {
         $checks        = $this->componentCheck->getResponse();
         $responseClass = $this->config->get('healthcheck.response');
@@ -34,17 +35,17 @@ class HealthCheckController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function extendet(): ?\Illuminate\Http\JsonResponse
+    public function extended(): ?JsonResponse
     {
-        if (!$this->config->get('healthcheck.extendet')) {
+        if (!$this->config->get('healthcheck.extended')) {
             return null;
         }
 
         $checks        = $this->componentCheck->getResponse();
         $responseClass = $this->config->get('healthcheck.response');
 
-        return (new $responseClass())->extendetResponse($checks);
+        return (new $responseClass())->extendedResponse($checks);
     }
 }
